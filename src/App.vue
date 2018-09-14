@@ -1,0 +1,21 @@
+<template>
+    <router-view/>
+</template>
+
+<script>
+export default {
+  name: 'App'
+}
+</script>
+
+<style>
+@font-face{font-family: 'NotoSansCJKkr-Medium'; src:url('./assets/font/NotoSansCJKkr-Medium.otf');}
+@font-face{font-family: 'NotoSansCJKkr-Bold'; src:url('./assets/font/NotoSansCJKkr-Bold.otf');}
+@font-face{font-family: 'NotoSansCJKkr-Regular'; src:url('./assets/font/NotoSansCJKkr-Regular.otf');}
+
+body{
+  margin : 0;
+  background: #e2e2e2;
+}
+
+</style>
