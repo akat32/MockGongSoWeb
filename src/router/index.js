@@ -7,7 +7,7 @@ import mainPage from '@/components/mainPage'
 import mandal from '@/components/mandal'
 import subMandal from '@/components/subMandal'
 import shop from '@/components/shop'
-import setting from '@/components/setting'
+import set from '@/components/set'
 
 Vue.use(Router)
 
@@ -41,7 +41,7 @@ export default new Router({
         {
           path: '/setting',
           components: {
-            footer: setting
+            footer: set
           }
         },
         {
