@@ -7,9 +7,16 @@ import mainPage from '@/components/mainPage'
 import mandal from '@/components/mandal'
 import subMandal from '@/components/subMandal'
 import shop from '@/components/shop'
-import set from '@/components/set'
-
+import sett from '@/components/sett'
+import NaNMandal from '@/components/NaNMandal.vue'
+import NaNMandalS from '@/components/NaNMandalS.vue'
+import Storage from 'vue-web-storage'
 Vue.use(Router)
+
+Vue.use(Storage, {
+  prefix: 'MockGongSo',
+  drivers: ['session', 'local']
+})
 
 export default new Router({
   routes: [
@@ -41,13 +48,25 @@ export default new Router({
         {
           path: '/setting',
           components: {
-            footer: set
+            footer: sett
           }
         },
         {
           path: '/',
           components: {
             footer: mainPage
+          }
+        },
+        {
+          path: '/nan',
+          components: {
+            footer: NaNMandal
+          }
+        },
+        {
+          path: '/nans',
+          components: {
+            footer: NaNMandalS
           }
         }
       ]

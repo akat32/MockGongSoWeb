@@ -20,5 +20,8 @@ body{
   margin : 0;
   background: #e2e2e2;
 }
-
+a:link { color: red; text-decoration: none;}
+a:visited { color: black; text-decoration: none;}
+a:hover { color: blue; text-decoration: underline;}
+a.noul:hover { text-decoration:none !important }
 </style>

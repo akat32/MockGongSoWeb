@@ -1,16 +1,54 @@
 <template>
   <div>
-    <p class = "day">만다라트 11일째 달성중</p>
+    <p class = "day">만다라트 {{ startDay }}일째 달성중</p>
     <div class = "img">
-      <img src="../assets/step_1ldpi.png" class = "inner_img"/>
+      <img :src = "imgString" v-on:click = "click" class = "inner_img"/>
     </div>
-    <p class = "achievement">21<span>%</span></p>
+    <p class = "achievement">{{ achievement }}<span>%</span></p>
   </div>
 </template>
 
 <script>
+import Vue from 'Vue'
+// import axios from 'axios'
+import Storage from 'vue-web-storage'
+Vue.use(Storage)
+
+// imageVariable
+// imageVariable = require('../assets/step1')
+function dateDiff (_date1, _date2) {
+  var diffDate1 = _date1 instanceof Date ? _date1 : new Date(_date1)
+  var diffDate2 = _date2 instanceof Date ? _date2 : new Date(_date2)
+  diffDate1 = new Date(diffDate1.getFullYear(), diffDate1.getMonth() + 1, diffDate1.getDate())
+  diffDate2 = new Date(diffDate2.getFullYear(), diffDate2.getMonth() + 1, diffDate2.getDate())
+  var diff = Math.abs(diffDate2.getTime() - diffDate1.getTime())
+  diff = Math.ceil(diff / (1000 * 3600 * 24))
+  return diff
+}
 export default {
-  name: 'mainPage'
+  name: 'mainPage',
+  data () {
+    var mandalImgString = 'asd'
+    var achievement = Vue.$localStorage.get('achievement')
+    var start = dateDiff(Vue.$localStorage.get('startDay'), new Date()) + 1
+    if (achievement >= 75) mandalImgString = require('../assets/step_4ldpi.png')
+    else if (achievement >= 50) mandalImgString = require('../assets/step_3ldpi.png')
+    else if (achievement >= 25) mandalImgString = require('../assets/step_2ldpi.png')
+    else mandalImgString = require('../assets/step_1ldpi.png')
+    return {
+      startDay: start,
+      imgString: mandalImgString,
+      achievement: Vue.$localStorage.get('achievement')
+    }
+  },
+  methods: {
+    click () {
+      console.log(dateDiff('', new Date()) + 1)
+      // Vue.$localStorage.get('startDay')
+      // eslint-disable-next-line
+    }
+  },
+  mounted: () => {}
 }
 </script>
 <!-- Add "scoped" attribute to limit CSS to this component only -->

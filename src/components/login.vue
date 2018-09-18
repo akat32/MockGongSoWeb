@@ -2,12 +2,12 @@
   <div>
     <div class = "Logo"></div>
     <div class = "inputArea">
-      <input type="text" class = "email" placeholder="E-mail"/>
-      <input type="password" class = "passwd" placeholder="Password"/>
+      <input v-model = "email" type="text" class = "email" placeholder="E-mail"/>
+      <input v-model = "passwd" type="password" class = "passwd" placeholder="Password"/>
     </div>
-    <div class = "LoginBtn" onclick = "gologin();">로그인</div>
+    <div class = "LoginBtn" v-on:click = "login">로그인</div>
     <div class = "signText">
-      <span class = "index">계정이 없으신가요? <a href="#/register">회원가입하기</a></span>
+      <span class = "index">계정이 없으신가요? <router-link to="/register">회원가입하기</router-link></span>
     </div>
     <div class = "textSocial">소셜로그인</div>
     <div class = "social">
@@ -18,11 +18,30 @@
   </div>
 </template>
 <script>
+import Vue from 'Vue'
+import axios from 'axios'
+import Storage from 'vue-web-storage'
+Vue.use(Storage)
+
 export default {
   name: 'login',
-  data () {
-    return {
-      msg: 'Welcome to Your Vue.js App'
+  methods: {
+    async login () {
+      var result = await axios.post('http://iwin247.kr:3321/signin', {
+        email: this.email,
+        passwd: this.passwd
+      }).catch((response) => {
+        alert('아이디, 비밀번호를 확인해주세요!')
+        return 0
+      })
+      if (result.status === 200) {
+        Vue.$localStorage.set('token', result.data.data.token)
+        Vue.$localStorage.set('name', result.data.data.name)
+        Vue.$localStorage.set('MandalChk', result.data.data.MandalChk)
+        Vue.$localStorage.set('startDay', result.data.data.startDay)
+        Vue.$localStorage.set('achievement', result.data.data.achievement)
+        location.replace('#/')
+      }
     }
   }
 }

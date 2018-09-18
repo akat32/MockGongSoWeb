@@ -1,50 +1,31 @@
 <template>
   <div>
     <router-view name="footer"></router-view>
-    <div class = "LogoBtn" v-on:click = "goMain">
+    <router-link class = "LogoBtn" to = "/">
       <div class = "LogoImg"></div>
-    </div>
+    </router-link>
     <div class = "footer">
-      <div class = "page1" v-on:click = "goPage1">
+      <router-link class = "page1" to = "/mandalA">
         <div class = "page1_icon"></div>
-      </div>
-      <div class = "page2" v-on:click = "goPage2">
+      </router-link>
+      <router-link class = "page2" to = "/mandalS">
         <div class = "page2_icon"></div>
-      </div>
-      <div class = "page3" v-on:click = "goPage3">
+      </router-link>
+      <router-link class = "page3" to = "/shop">
         <div class = "page3_icon"></div>
-      </div>
-      <div class = "page4" v-on:click = "goPage4">
+      </router-link>
+      <router-link class = "page4" to = "/setting">
         <div class = "page4_icon"></div>
-      </div>
+      </router-link>
     </div>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'mandal',
-  methods: {
-    goMain () {
-      location.replace('/#/')
-    },
-    goPage1 () {
-      location.replace('/#/mandalA')
-    },
-    goPage2 () {
-      location.replace('/#/mandalS')
-    },
-    goPage3 () {
-      location.replace('/#/shop')
-    },
-    goPage4 () {
-      location.replace('/#/setting')
-    }
-  }
+  name: 'mandal'
 }
-
 </script>
-
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 .footer{
@@ -55,7 +36,7 @@ export default {
   background : #fff;
   display: flex;
 }
-.footer > div{
+.page1, .page2, .page3, .page4{
   width: 20%;
   height: 100%;
   display: flex;
@@ -84,7 +65,7 @@ export default {
   margin-bottom: auto;
 }
 .page3_icon{
-  background-image: url('../assets/icon3.png');
+  background-image: url('../assets/storehdpi.png');
   background-size: contain;
   background-repeat: no-repeat;
   width: 4.8vh;

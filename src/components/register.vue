@@ -4,21 +4,37 @@
     <div class = "title">회원가입</div>
     <div class = "Logo"></div>
     <div class = "inputArea">
-      <input type="text" class = "name" placeholder="이름"/>
-      <input type="email" class = "email" placeholder="E-mail"/>
-      <input type="password" class = "passwd" placeholder="Password"/>
-      <input type="password" class = "confirmPasswd" placeholder="Confirm Password"/>
+      <input v-model = "name" type="text" class = "name" placeholder="이름"/>
+      <input v-model = "email" type="email" class = "email" placeholder="E-mail"/>
+      <input v-model = "passwd" type="password" class = "passwd" placeholder="Password"/>
+      <input v-model = "repasswd" type="password" class = "confirmPasswd" placeholder="Confirm Password"/>
     </div>
-    <div class = "RegBtn" onclick="register();">가입하기</div>
+    <div class = "RegBtn" v-on:click = "register">가입하기</div>
   </div>
 </template>
 
 <script>
+import axios from 'axios'
+
 export default {
   name: 'register',
-  data () {
-    return {
-      msg: 'Welcome to Your Vue.js App'
+  methods: {
+    async register () {
+      if (this.passwd !== this.repasswd) {
+        alert('비밀번호가 틀렸습니다!')
+        return 0
+      }
+      var result = await axios.post('http://iwin247.kr:3321/signup', {
+        name: this.name,
+        email: this.email,
+        passwd: this.passwd
+      }).catch((response) => {
+        return alert('이메일이 중복되었어요!')
+      })
+      if (result.status === 200) {
+        alert('환영합니다! ' + this.name + '님!')
+        location.replace('#/login')
+      }
     }
   }
 }
