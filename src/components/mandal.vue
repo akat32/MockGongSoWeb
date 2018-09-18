@@ -1,39 +1,58 @@
 <template>
   <div>
-    <div class = "title">만다라트</div>
-    <div class = "mandalTitle">
-      <div class = "titleIndex">제목입니당</div>
-      <div class = "achievement" >지금까지 0% 달성 </div>
-    </div>
-    <div class = "downBtn">
-      <div class = "downImg"></div>
-    </div>
-    <div class = "writeBtn"></div>
-    <div class = "mandal">
-      <div class = "mandalLine1">
-        <div class = "Box1"></div>
-        <div class = "Box2"></div>
-        <div class = "Box3"></div>
+    <template v-if = "MandalChk">
+      <div>
+        <div class = "title">만다라트</div>
+        <div class = "mandalTitle">
+          <div class = "titleIndex">{{ title }}</div>
+          <div class = "achievement" >지금까지 {{ achievement }}% 달성 </div>
+        </div>
+        <div class = "mandal">
+          <div class = "mandalLine1">
+            <div class = "Box1"></div>
+            <div class = "Box2"></div>
+            <div class = "Box3"></div>
+          </div>
+          <div class = "mandalLine2">
+            <div class = "Box4"></div>
+            <div class = "Box5"></div>
+            <div class = "Box6"></div>
+          </div>
+          <div class = "mandalLine3">
+            <div class = "Box7"></div>
+            <div class = "Box8"></div>
+            <div class = "Box9"></div>
+          </div>
+        </div>
       </div>
-      <div class = "mandalLine2">
-        <div class = "Box4"></div>
-        <div class = "Box5"></div>
-        <div class = "Box6"></div>
+    </template>
+    <template v-else>
+      <div>
+        <div class = "title">만다라트</div>
+        <div class = "non_mandal">
+          <div class = "Logo"></div>
+          <div class = "text">현재 만들어 놓은<br />만다라트 가 없어요!</div>
+        </div>
+        <router-link to = '/makeA'>
+          <div class = "new_mandal">만다라트 새로 만들기</div>
+        </router-link>
       </div>
-      <div class = "mandalLine3">
-        <div class = "Box7"></div>
-        <div class = "Box8"></div>
-        <div class = "Box9"></div>
-      </div>
-    </div>
+    </template>
   </div>
 </template>
 <script>
+import Vue from 'Vue'
+// import axios from 'axios'
+import Storage from 'vue-web-storage'
+Vue.use(Storage)
+
 export default {
   name: 'mandal',
   data () {
     return {
-      msg: 'Welcome to Your Vue.js App'
+      title: Vue.$localStorage.get('title'),
+      achievement: Vue.$localStorage.get('achievement'),
+      MandalChk: Vue.$localStorage.get('MandalChk')
     }
   }
 }
@@ -85,38 +104,6 @@ export default {
   height: 0.7vh;
   z-index: 100;
 }
-.downBtn, .writeBtn{
-  position: absolute;
-  width: 3vh;
-  height: 3vh;
-  background-color: #fff;
-  border: 0;
-  left: calc(95.8vw - 3.5vh);
-}
-.writeBtn{
-  background-image: url('/img/vector_smart_object.png');
-  background-size: contain;
-  background-repeat: no-repeat;
-  z-index: 1;
-  top: 2vh;
-}
-.downBtn{
-  width: 4.2vh;
-  height: 4.2vh;
-  top: 83.2vh;
-  left: calc(95.8vw - 4.7vh);
-  display: flex;
-}
-.downImg{
-  width: 3vh;
-  height: 3vh;
-  margin:auto;
-  background-image: url('/img/down.png');
-  background-size: contain;
-  background-repeat: no-repeat;
-  margin-top: auto;
-  margin-bottom: auto;
-}
 .mandal{
   width: 45vh;
   height: 45vh;
@@ -158,5 +145,40 @@ export default {
 }
 .BoxWhite{
   background-color: #fff;
+}
+.Logo{
+  width: 20.6vh;
+  height: 20.6vh;
+  background-image: url('../assets/main_logoldpi.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  border-radius: 50%;
+  margin:auto;
+}
+.text{
+  font-family: 'NotoSansCJKkr-Regular';
+  text-align: center;
+  font-size: 2.2vh;
+  margin-top: 1.5vh;
+}
+.new_mandal{
+  font-family: 'NotoSansCJKkr-Regular';
+  border-radius: 0.3em;
+  width: 79vw;
+  height: 8vh;
+  background: #fff;
+  margin:auto;
+  color: #677e52;
+  text-align: center;
+  line-height: 8vh;
+  font-size: 2.1vh;
+  box-shadow: 0px 0.2vh 0 gray;
+}
+.non_mandal{
+  width: 20.6vh;
+  height: 30vh;
+  margin:auto;
+  margin-top: 22vh;
+  margin-bottom: 10vh;
 }
 </style>

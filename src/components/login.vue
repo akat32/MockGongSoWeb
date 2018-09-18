@@ -37,6 +37,7 @@ export default {
       if (result.status === 200) {
         Vue.$localStorage.set('token', result.data.data.token)
         Vue.$localStorage.set('name', result.data.data.name)
+        Vue.$localStorage.set('title', result.data.data.title)
         Vue.$localStorage.set('MandalChk', result.data.data.MandalChk)
         Vue.$localStorage.set('startDay', result.data.data.startDay)
         Vue.$localStorage.set('achievement', result.data.data.achievement)

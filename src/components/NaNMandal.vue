@@ -5,7 +5,7 @@
       <div class = "Logo"></div>
       <div class = "text">현재 만들어 놓은<br />만다라트 가 없어요!</div>
     </div>
-    <router-link to = '/make'>
+    <router-link to = '/makeA'>
       <div class = "new_mandal">만다라트 새로 만들기</div>
     </router-link>
   </div>

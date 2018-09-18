@@ -8,8 +8,13 @@ import mandal from '@/components/mandal'
 import subMandal from '@/components/subMandal'
 import shop from '@/components/shop'
 import sett from '@/components/sett'
-import NaNMandal from '@/components/NaNMandal.vue'
-import NaNMandalS from '@/components/NaNMandalS.vue'
+import NaNMandal from '@/components/NaNMandal'
+import NaNMandalS from '@/components/NaNMandalS'
+import mandalC from '@/components/mandalC'
+import makeA from '@/components/makeA'
+import makeB from '@/components/makeB'
+import makeC from '@/components/makeC'
+import makeD from '@/components/makeD'
 import Storage from 'vue-web-storage'
 Vue.use(Router)
 
@@ -58,6 +63,12 @@ export default new Router({
           }
         },
         {
+          path: '/mandalC',
+          components: {
+            footer: mandalC
+          }
+        },
+        {
           path: '/nan',
           components: {
             footer: NaNMandal
@@ -78,6 +89,22 @@ export default new Router({
     {
       path: '/register',
       component: register
+    },
+    {
+      path: '/makeA',
+      component: makeA
+    },
+    {
+      path: '/makeB',
+      component: makeB
+    },
+    {
+      path: '/makeC',
+      component: makeC
+    },
+    {
+      path: '/makeD',
+      component: makeD
     }
   ]
 })

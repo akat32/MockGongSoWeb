@@ -10,11 +10,11 @@
       </div>
       <div class = "innerWith">
         <div class = "lockScreen">잠금화면 만다라트 설정</div>
-        <div class = "onBtn">ON</div>
+        <div v-on:click = 'push' class = "offBtn">OFF</div>
       </div>
       <div class = "innerWith">
         <div class = "push">푸시알림 설정</div>
-        <div class = "offBtn">OFF</div>
+        <div v-on:click = 'push' class = "offBtn">OFF</div>
       </div>
       <div class = "innerWith">
         <div class = "terms">약관 및 개인정보 활용 동의</div>
@@ -30,7 +30,6 @@ import Vue from 'Vue'
 // import axios from 'axios'
 import Storage from 'vue-web-storage'
 Vue.use(Storage)
-
 function dateDiff (_date1, _date2) {
   var diffDate1 = _date1 instanceof Date ? _date1 : new Date(_date1)
   var diffDate2 = _date2 instanceof Date ? _date2 : new Date(_date2)
@@ -47,6 +46,11 @@ export default {
     return {
       name: Vue.$localStorage.get('name'),
       startDay: start
+    }
+  },
+  methods: {
+    push () {
+      alert('웹에서는 지원하지 않는 기능입니다!')
     }
   }
 }
@@ -92,7 +96,10 @@ export default {
   border-radius: 50%;
   height: 10.3vh;
   width: 10.3vh;
-  background: #677e52;
+  background-color: #677e52;
+  background-image: url('../assets/mtpage_4ldpi.png');
+  background-repeat: no-repeat;
+  background-size: contain;
   left:7.8vw;
   top:0;
   bottom: 0;
