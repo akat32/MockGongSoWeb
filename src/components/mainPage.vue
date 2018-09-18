@@ -9,14 +9,18 @@
 </template>
 <template v-else>
   <div>
-    <p class = "day">만다라트가 아직 없어요!</p>
-    <div class = "img">
-      <img :src = "imgString" v-on:click = "click" class = "inner_img"/>
+    <p class = "day" style="margin-bottom: 3vh;">아직 만다라트가<br />만들어지지 않았어요:(</p>
+    <div class = "circle"></div>
+    <div class = "circle"></div>
+    <div class = "circle"></div>
+    <div class = "img1">
+      <img src = "../assets/step0.png" v-on:click = "click" class = "inner_img"/>
     </div>
+    <p class = "grayText">맨 왼쪽 하단의 만다라트 탭을 통해<br />당신만의 목표를 지어보세요!</p>
   </div>
 </template>
 <script>
-import Vue from 'vue'
+import Vue from 'Vue'
 // import axios from 'axios'
 import Storage from 'vue-web-storage'
 Vue.use(Storage)
@@ -98,5 +102,29 @@ span{
   margin:auto;
   margin-top: 6.6vh;
   margin-bottom: 7.8vh;
+}
+.circle{
+  width: 1vh;
+  height: 1vh;
+  margin: auto;
+  margin-bottom: 1vh;
+  border-radius: 50%;
+  background: gray;
+}
+.img1{
+  width: 8vh;
+  height: 8vh;
+  margin:auto;
+  margin-top: 4vh;
+  margin-bottom: 4vh;
+  display: flex;
+}
+.grayText{
+  text-align: center;
+  font-size: 2.1vh;
+  font-family: 'NotoSansCJKkr-Regular';
+  color: gray;
+  line-height: 3vh;
+  font-weight: 600;
 }
 </style>
