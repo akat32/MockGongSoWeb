@@ -5,7 +5,7 @@
       <div class = "userProfile">
         <div class = "profileImg"></div>
         <div class = "name">{{ name }}</div>
-        <div class = "achievement">만다라트 {{ startDay }}일째 사용중</div>
+        <div class = "achievement">{{ startDay }}</div>
         <div class = "arrow"></div>
       </div>
       <div class = "innerWith">
@@ -43,6 +43,10 @@ export default {
   name: 'sett',
   data () {
     var start = dateDiff(Vue.$localStorage.get('startDay'), new Date()) + 1
+    if (Vue.$localStorage.get('startDay') === '') start = '0'
+    // eslint-disable-next-line
+    if (start === '0') start = '만다라트 사용중이 아닙니다!'
+    else start = '만다라트 ' + start + '일째 사용중'
     return {
       name: Vue.$localStorage.get('name'),
       startDay: start

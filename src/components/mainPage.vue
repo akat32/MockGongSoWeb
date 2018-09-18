@@ -1,4 +1,4 @@
-<template>
+<template v-if = "MandalChk">
   <div>
     <p class = "day">만다라트 {{ startDay }}일째 달성중</p>
     <div class = "img">
@@ -7,7 +7,14 @@
     <p class = "achievement">{{ achievement }}<span>%</span></p>
   </div>
 </template>
-
+<template v-else>
+  <div>
+    <p class = "day">만다라트가 아직 없어요!</p>
+    <div class = "img">
+      <img :src = "imgString" v-on:click = "click" class = "inner_img"/>
+    </div>
+  </div>
+</template>
 <script>
 import Vue from 'Vue'
 // import axios from 'axios'
@@ -36,6 +43,7 @@ export default {
     else if (achievement >= 25) mandalImgString = require('../assets/step_2ldpi.png')
     else mandalImgString = require('../assets/step_1ldpi.png')
     return {
+      MandalChk: Vue.$localStorage.get('MandalChk'),
       startDay: start,
       imgString: mandalImgString,
       achievement: Vue.$localStorage.get('achievement')
