@@ -21,12 +21,12 @@
         <div class = "arrow"></div>
       </div>
       <div class = "withdrawal">회원 탈퇴</div>
-      <div class = "logout">로그아웃</div>
+      <div v-on:click = "logout" class = "logout">로그아웃</div>
     </div>
   </div>
 </template>
 <script>
-import Vue from 'Vue'
+import Vue from 'vue'
 // import axios from 'axios'
 import Storage from 'vue-web-storage'
 Vue.use(Storage)
@@ -55,6 +55,10 @@ export default {
   methods: {
     push () {
       alert('웹에서는 지원하지 않는 기능입니다!')
+    },
+    logout () {
+      Vue.$localStorage.clear()
+      location.replace('#/login')
     }
   }
 }

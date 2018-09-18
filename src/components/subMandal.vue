@@ -35,7 +35,7 @@
   </div>
 </template>
 <script>
-import Vue from 'Vue'
+import Vue from 'vue'
 import Storage from 'vue-web-storage'
 Vue.use(Storage)
 export default {
