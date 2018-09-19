@@ -1,37 +1,41 @@
-<template v-if = "triMandalChk">
+<template>
   <div>
-    <div class = "title">만다라트</div>
-    <div class = "mandalTitle">
-      <div class = "titleIndex">방학 숙제 끝내기</div>
-    </div>
-    <div class = "mandal">
-      <div class = "tri1_border">
-        <div class = "tri1"></div>
+    <template v-if = "triMandalChk">
+      <div>
+        <div class = "title">만다라트</div>
+        <div class = "mandalTitle">
+          <div class = "titleIndex">방학 숙제 끝내기</div>
+        </div>
+        <div class = "mandal">
+          <div class = "tri1_border">
+            <div class = "tri1"></div>
+          </div>
+          <div class = "tri_line">
+            <div class = "tri2_border">
+              <div class = "tri2"></div>
+            </div>
+            <div class = "triMain_border">
+              <!-- <div class = "triMain"></div> -->
+            </div>
+            <div class = "tri3_border">
+              <div class = "tri3"></div>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class = "tri_line">
-        <div class = "tri2_border">
-          <div class = "tri2"></div>
+    </template>
+    <template v-else>
+      <div>
+        <div class = "title">만다라트</div>
+        <div class = "non_mandal">
+          <div class = "Logo"></div>
+          <div class = "text">현재 만들어 놓은<br />작은 만다라트가 없어요!</div>
         </div>
-        <div class = "triMain_border">
-          <!-- <div class = "triMain"></div> -->
-        </div>
-        <div class = "tri3_border">
-          <div class = "tri3"></div>
-        </div>
+        <router-link to = '/makes'>
+          <div class = "new_mandal">작은 만다라트 새로 만들기</div>
+        </router-link>
       </div>
-    </div>
-  </div>
-</template>
-<template v-else>
-  <div>
-    <div class = "title">만다라트</div>
-    <div class = "non_mandal">
-      <div class = "Logo"></div>
-      <div class = "text">현재 만들어 놓은<br />작은 만다라트가 없어요!</div>
-    </div>
-    <router-link to = '/makes'>
-      <div class = "new_mandal">작은 만다라트 새로 만들기</div>
-    </router-link>
+    </template>
   </div>
 </template>
 <script>

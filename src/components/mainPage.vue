@@ -1,22 +1,26 @@
-<template v-if = "MandalChk">
+<template>
   <div>
-    <p class = "day">만다라트 {{ startDay }}일째 달성중</p>
-    <div class = "img">
-      <img :src = "imgString" v-on:click = "click" class = "inner_img"/>
-    </div>
-    <p class = "achievement">{{ achievement }}<span>%</span></p>
-  </div>
-</template>
-<template v-else>
-  <div>
-    <p class = "day" style="margin-bottom: 3vh;">아직 만다라트가<br />만들어지지 않았어요:(</p>
-    <div class = "circle"></div>
-    <div class = "circle"></div>
-    <div class = "circle"></div>
-    <div class = "img1">
-      <img src = "../assets/step0.png" v-on:click = "click" class = "inner_img"/>
-    </div>
-    <p class = "grayText">맨 왼쪽 하단의 만다라트 탭을 통해<br />당신만의 목표를 지어보세요!</p>
+    <template v-if = "MandalChk">
+      <div>
+        <p class = "day">만다라트 {{ startDay }}일째 달성중</p>
+        <div class = "img">
+          <img :src = "imgString" v-on:click = "click" class = "inner_img"/>
+        </div>
+        <p class = "achievement">{{ achievement }}<span>%</span></p>
+      </div>
+    </template>
+    <template v-else>
+      <div>
+        <p class = "day" style="margin-bottom: 3vh;">아직 만다라트가<br />만들어지지 않았어요:(</p>
+        <div class = "circle"></div>
+        <div class = "circle"></div>
+        <div class = "circle"></div>
+        <div class = "img1">
+          <img src = "../assets/step0.png" v-on:click = "click" class = "inner_img"/>
+        </div>
+        <p class = "grayText">맨 왼쪽 하단의 만다라트 탭을 통해<br />당신만의 목표를 지어보세요!</p>
+      </div>
+    </template>
   </div>
 </template>
 <script>
