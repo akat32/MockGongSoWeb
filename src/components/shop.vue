@@ -1,11 +1,28 @@
 <template>
   <div>
-    <div class = "title">상점</div>
-    <div class = "advertising1"></div>
-    <div class = "target">
-      <div class = "ad"></div>
-    </div>
-    <div class = "advertising2"></div>
+    <template v-if = "done">
+      <div>
+        <div class = "title">상점</div>
+        <div class = "advertising1"></div>
+        <div class = "target">
+          <div class = "ad"></div>
+        </div>
+        <div class = "advertising2"></div>
+      </div>
+    </template>
+    <template v-else>
+      <div>
+        <div class = "title">상점</div>
+        <p class = "day" style="margin-bottom: 3vh;">목공소는 지금<br />공사중</p>
+        <div class = "circle"></div>
+        <div class = "circle"></div>
+        <div class = "circle"></div>
+        <div class = "img1">
+          <img src = "../assets/vector_smart_object.png" class = "inner_img"/>
+        </div>
+        <p class = "grayText">더 좋은 기능을 위해<br />조금만 기다려주세요!</p>
+      </div>
+    </template>
   </div>
 </template>
 <script>
@@ -13,29 +30,60 @@ export default {
   name: 'shop',
   data () {
     return {
-      msg: 'Welcome to Your Vue.js App'
+      done: false
     }
   }
 }
 </script>
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+.inner_img{
+  height: 100%;
+  width: 100%;
+  margin:auto;
+  margin-left: auto;
+  margin-right: auto;
+}
+.day{
+  line-height: 5.3vh;
+  margin-top: 19.2vh;
+  font-size: 2.1vh;
+  font-weight: 600;
+  text-align: center;
+  font-family: 'NotoSansCJKkr-Regular';
+}
+.circle{
+  width: 0.8vh;
+  height: 0.8vh;
+  margin: auto;
+  margin-bottom: 1.8vh;
+  border-radius: 50%;
+  background: black;
+}
+.img1{
+  width: 23vh;
+  height: 6.4vh;
+  margin:auto;
+  margin-top: 4vh;
+  margin-bottom: 6vh;
+  display: flex;
+}
+.grayText{
+  letter-spacing: 0.1vh;
+  text-align: center;
+  font-size: 2.1vh;
+  font-family: 'NotoSansCJKkr-Regular';
+  color: black;
+  line-height: 3vh;
+  font-weight: 600;
+}
 .title{
-  font-family: 'NotoSansCJKkr-Medium';
+  font-family: 'NotoSansCJKkr-Regular';
   width: 100%;
   height: 7vh;
   background: #fff;
   text-align: center;
   line-height: 7vh;
-}
-.bar{
-  background: #b7ca79;
-  position: absolute;
-  top: 90.4vh;
-  width: 20%;
-  right: 20%;
-  height: 0.7vh;
-  z-index: 100;
 }
 .advertising1, .advertising2{
   width: 90vw;

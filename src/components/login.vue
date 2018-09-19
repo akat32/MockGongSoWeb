@@ -36,6 +36,7 @@ export default {
       })
       if (result.status === 200) {
         Vue.$localStorage.set('token', result.data.data.token)
+        Vue.$localStorage.set('triTitle', result.data.data.triTitle)
         Vue.$localStorage.set('name', result.data.data.name)
         Vue.$localStorage.set('title', result.data.data.title)
         Vue.$localStorage.set('MandalChk', result.data.data.MandalChk)

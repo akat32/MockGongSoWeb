@@ -4,7 +4,7 @@
       <div>
         <div class = "title">만다라트</div>
         <div class = "mandalTitle">
-          <div class = "titleIndex">방학 숙제 끝내기</div>
+          <div class = "titleIndex">{{ triTitle }}</div>
         </div>
         <div class = "mandal">
           <div class = "tri1_border">
@@ -46,7 +46,8 @@ export default {
   name: 'subMandal',
   data () {
     return {
-      triMandalChk: Vue.$localStorage.get('triMandalChk')
+      triMandalChk: Vue.$localStorage.get('triMandalChk'),
+      triTitle: Vue.$localStorage.get('triTitle')
     }
   }
 }
@@ -118,7 +119,7 @@ export default {
   height: 0;
   border-style:solid;
   border-style:solid;
-  border-color: transparent transparent #fff;
+  border-color: transparent transparent #e2e2e2;
   border-width: 0 10vh calc(1.732 * 10vh) 10vh;
   position: absolute;
   top: 0.6vh;
@@ -126,9 +127,6 @@ export default {
 }
 .tri2_border{
   margin-right : 2vh;
-}
-.tri2, .tri3{
-  border-color: transparent transparent #e2e2e2;
 }
 .triMain_border{
   position: absolute;

@@ -9,19 +9,24 @@
         </div>
         <div class = "mandal">
           <div class = "mandalLine1">
-            <div class = "Box1"></div>
-            <div class = "Box2"></div>
-            <div class = "Box3"></div>
+            <Box mandal></Box>
+            <div style = "margin-right: 2.5vh;"></div>
+            <Box mandal></Box>
+            <div style = "margin-right: 2.5vh;"></div>
+            <Box mandal></Box>
           </div>
           <div class = "mandalLine2">
-            <div class = "Box4"></div>
+            <Box :mandal = "3"></Box>
+            <div style = "margin-right: 2.5vh;"></div>
             <div class = "Box5"></div>
-            <div class = "Box6"></div>
+            <Box :mandal = "4"></Box>
           </div>
           <div class = "mandalLine3">
-            <div class = "Box7"></div>
-            <div class = "Box8"></div>
-            <div class = "Box9"></div>
+            <Box :mandal = "5"></Box>
+            <div style = "margin-right: 2.5vh;"></div>
+            <Box :mandal = "6"></Box>
+            <div style = "margin-right: 2.5vh;"></div>
+            <Box :mandal = "7"></Box>
           </div>
         </div>
       </div>
@@ -46,6 +51,11 @@ import Vue from 'vue'
 import Storage from 'vue-web-storage'
 Vue.use(Storage)
 
+Vue.component('Box', {
+  props: ['mandal'],
+  template: '<div class = "Box">{{ mandal }}</div>'
+})
+
 export default {
   name: 'mandal',
   data () {
@@ -56,6 +66,22 @@ export default {
     }
   }
 }
+// new Vue({
+//   el: '#Box',
+//   data: {
+//     items: [
+//       {mandal: 0},
+//       {mandal: 1},
+//       {mandal: 2},
+//       {mandal: 3},
+//       {mandal: 4},
+//       {mandal: 5},
+//       {mandal: 6},
+//       {mandal: 7}
+//     ]
+//   }
+// })
+
 </script>
 <style scoped>
 .title{
@@ -114,6 +140,12 @@ export default {
   width: 100%;
   height: 13vh;
   display: flex;
+}
+.Box{
+  width: 13vh;
+  height: 13vh;
+  background-color: #e2e2e2;
+  border: 0.2vh solid #677e52;
 }
 .Box1, .Box2, .Box3{
   width: 13vh;
