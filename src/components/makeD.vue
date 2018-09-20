@@ -7,22 +7,24 @@
       <div class = "circle3"></div>
     </div>
     <router-link class = "arrow1" to = "/makeC"></router-link>
-    <router-link class = "arrow2" to = "/makeC"></router-link>
-    <div class = "inputTitle">2단계 중심 키워드를 바탕으로<br />3단계 목표를 적어주세요</div>
-    <div class = "introTitle">2단계의 중심 키워드를 가지고 목표를 만들어보세요<br />3단계 목표도 언제든지 수정할 수 있어요</div>
-    <!-- <ul id = "wish">
-      <li v-for="item in items" class = "wsihItem">
-        <input type="text" class = "index" placeholder="{{ item.index }}"/>
-      </li>
-    </ul> -->
-    <!-- <ul id = "wishList">
-      <li v-for="item in items">
-        <div class = "wish">{{ item.message }}</div>
-      </li>
-    </ul> -->
-    <!-- <div class = "wish">EDCAN 폐부 하기</div>
-    <div class = "add">좋은 클라이언트 만나기</div> -->
-    <div class = "plus">+</div>
+    <router-link class = "arrow2" to = "/makeA"></router-link>
+    <div class = "inputTitle">만다라트의 원하는 위치에<br />3단계 목표를 정해주세요</div>
+    <div class = "introTitle">3단계 목표의 성취도를 변경해<br /> 만다라트의 완성도를 높일 수 있어요</div>
+    <div class = "mandal">
+      <div class = "mandalLine1">
+        <div v-on:click = "Box1Click" v-bind:class = "[Box, {BoxWhite : Box1}]"></div>
+        <div v-on:click = "Box2Click" v-bind:class = "[Box, {BoxWhite : Box2}]"></div>
+        <div v-on:click = "Box3Click" v-bind:class = "[Box, {BoxWhite : Box3}]"></div>
+      </div>
+      <div class = "mandalLine2">
+        <div v-on:click = "Box4Click" v-bind:class = "[Box, {BoxWhite : Box4}]"></div>
+        <div class = "box5">2</div>
+        <div v-on:click = "Box6Click" v-bind:class = "[Box, {BoxWhite : Box6}]"></div>  </div>
+      <div class = "mandalLine3">
+        <div v-on:click = "Box7Click" v-bind:class = "[Box, {BoxWhite : Box7}]"></div>
+        <div v-on:click = "Box8Click" v-bind:class = "[Box, {BoxWhite : Box8}]"></div>
+        <div v-on:click = "Box9Click" v-bind:class = "[Box, {BoxWhite : Box9}]"></div></div>
+    </div>
   </div>
 </template>
 <script>
@@ -32,20 +34,145 @@ import Storage from 'vue-web-storage'
 Vue.use(Storage)
 
 export default {
-  name: 'makeD',
+  name: 'makeB',
   data () {
     return {
-      arrow () {
-        alert('예에!')
+      Box1: (Vue.$localStorage.get('Box1Title') !== null),
+      Box2: (Vue.$localStorage.get('Box2Title') !== null),
+      Box3: (Vue.$localStorage.get('Box3Title') !== null),
+      Box4: (Vue.$localStorage.get('Box4Title') !== null),
+      Box6: (Vue.$localStorage.get('Box6Title') !== null),
+      Box7: (Vue.$localStorage.get('Box7Title') !== null),
+      Box8: (Vue.$localStorage.get('Box8Title') !== null),
+      Box9: (Vue.$localStorage.get('Box9Title') !== null)
+    }
+  },
+  methods: {
+    Box1Click () {
+      if (this.Box1) {
+        this.Box1 = !this.Box1
+        return 0
       }
+      var newTitle = prompt('2단계 목표를 입력하세요!')
+      if (newTitle !== null && newTitle !== '') {
+        Vue.$localStorage.set('Box1Title', newTitle)
+        this.Box1 = !this.Box1
+        return 0
+        // eslint-disable-next-line
+      }
+      else alert('다시 입력해주세요..')
+    },
+    Box2Click () {
+      if (this.Box2) {
+        this.Box2 = !this.Box2
+        return 0
+      }
+      var newTitle = prompt('2단계 목표를 입력하세요!')
+      if (newTitle !== null && newTitle !== '') {
+        Vue.$localStorage.set('Box2Title', newTitle)
+        this.Box2 = !this.Box2
+        return 0
+        // eslint-disable-next-line
+      }
+      else alert('다시 입력해주세요..')
+    },
+    Box3Click () {
+      if (this.Box3) {
+        this.Box3 = !this.Box3
+        return 0
+        // eslint-disable-next-line
+      }
+      var newTitle = prompt('2단계 목표를 입력하세요!')
+      if (newTitle !== null && newTitle !== '') {
+        Vue.$localStorage.set('Box3Title', newTitle)
+        this.Box3 = !this.Box3
+        return 0
+        // eslint-disable-next-line
+      }
+      else alert('다시 입력해주세요..')
+    },
+    Box4Click () {
+      if (this.Box4) {
+        this.Box4 = !this.Box4
+        return 0
+        // eslint-disable-next-line
+      }
+      var newTitle = prompt('2단계 목표를 입력하세요!')
+      if (newTitle !== null && newTitle !== '') {
+        Vue.$localStorage.set('Box4Title', newTitle)
+        this.Box4 = !this.Box4
+        return 0
+        // eslint-disable-next-line
+      }
+      else alert('다시 입력해주세요..')
+    },
+    Box6Click () {
+      if (this.Box6) {
+        this.Box6 = !this.Box6
+        return 0
+        // eslint-disable-next-line
+      }
+      var newTitle = prompt('2단계 목표를 입력하세요!')
+      if (newTitle !== null && newTitle !== '') {
+        Vue.$localStorage.set('Box6Title', newTitle)
+        this.Box6 = !this.Box6
+        return 0
+        // eslint-disable-next-line
+      }
+      else alert('다시 입력해주세요..')
+    },
+    Box7Click () {
+      if (this.Box7) {
+        this.Box7 = !this.Box7
+        return 0
+        // eslint-disable-next-line
+      }
+      var newTitle = prompt('2단계 목표를 입력하세요!')
+      if (newTitle !== null && newTitle !== '') {
+        Vue.$localStorage.set('Box7Title', newTitle)
+        this.Box7 = !this.Box7
+        return 0
+        // eslint-disable-next-line
+      }
+      else alert('다시 입력해주세요..')
+    },
+    Box8Click () {
+      if (this.Box8) {
+        this.Box8 = !this.Box8
+        return 0
+        // eslint-disable-next-line
+      }
+      var newTitle = prompt('2단계 목표를 입력하세요!')
+      if (newTitle !== null && newTitle !== '') {
+        Vue.$localStorage.set('Box8Title', newTitle)
+        this.Box8 = !this.Box8
+        return 0
+        // eslint-disable-next-line
+      }
+      else alert('다시 입력해주세요..')
+    },
+    Box9Click () {
+      if (this.Box9) {
+        this.Box9 = !this.Box9
+        return 0
+        // eslint-disable-next-line
+      }
+      var newTitle = prompt('2단계 목표를 입력하세요!')
+      if (newTitle !== null && newTitle !== '') {
+        Vue.$localStorage.set('Box9Title', newTitle)
+        this.Box9 = !this.Box9
+        return 0
+        // eslint-disable-next-line
+      }
+      else alert('다시 입력해주세요..')
     }
   }
 }
 </script>
 <style scoped>
 ul{
-  list-style: none;
-  padding: 0;
+  list-style:none;
+  padding:0;
 }
 .title{
   font-family: 'NotoSansCJKkr-Medium';
@@ -106,27 +233,52 @@ ul{
   color: #677e52;
   text-align: center;
   font-size: 1.6vh;
-  margin-bottom: 6vh;
+  margin-bottom: 7vh;
 }
-.wish, .plus, .add{
-  width: 90vw;
-  height: 7vh;
-  background: #fff;
-  border : 0.2vh solid #677e52;
-  margin: auto;
+.mandal{
+  width: 36.8vh;
+  height: 36.8vh;
+  margin:auto;
+}
+.mandalLine1, .mandalLine2, .mandalLine3{
+  display: flex;
+  height: 9.2vh;
+  width: 34vh;
+  margin:auto;
+  margin-bottom: 2vh;
+}
+.mandalLine1 > div{
+  border: 0.16vh solid #677e52;
+  width: 9.8vh;
+  height: 9.8vh;
+  margin:auto;
+  font-size: 2.6vh;
   text-align: center;
-  line-height: 7vh;
-  margin-bottom: 2.5vh;
-  color: #677e52;
-  font-size: 2.3vh;
-  font-family: 'NotoSansCJKkr-Regular';
+  line-height: 9vh;
 }
-.add{
-  background: #e2e2e2;
+.mandalLine2 > div{
+  border: 0.16vh solid #677e52;
+  width: 9.8vh;
+  height: 9.8vh;
+  margin:auto;
+  font-size: 2.6vh;
+  text-align: center;
+  line-height: 9vh;
 }
-.plus{
-  background: #e2e2e2;
-  font-size: 5vh;
-  font-weight: bold;
+.mandalLine3 > div{
+  border: 0.16vh solid #677e52;
+  width: 9.8vh;
+  height: 9.8vh;
+  margin:auto;
+  font-size: 2.6vh;
+  text-align: center;
+  line-height: 9vh;
+}
+.box5{
+  color: #fff;
+  background: #667e52
+}
+.BoxWhite{
+  background: #fff;
 }
 </style>
