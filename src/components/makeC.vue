@@ -9,23 +9,21 @@
     <router-link class = "arrow1" to = "/makeD"></router-link>
     <router-link class = "arrow2" to = "/makeB"></router-link>
     <div class = "inputTitle">만들어진 2단계의 칸을 눌러<br />3단계의 목표를 정해주세요</div>
-    <div class = "introTitle">2단계 목표는 3단계의 중심 키워드가 되고<br />언제든지 수정할 수 있어요</div>
+    <div class = "introTitle">2단계의 중심 키워드를 가지고 목표를 만들어보세요<br />3단계 목표도 언제든지 수정할 수 있어요</div>
     <div class = "mandal">
       <div class = "mandalLine1">
-        <div class = "box1">2</div>
-        <div class = "box2">2</div>
-        <div class = "box3">2</div>
+        <div v-on:click = "Box1Click" v-bind:class = "[Box, {BoxWhite : Box1}]"></div>
+        <div v-on:click = "Box2Click" v-bind:class = "[Box, {BoxWhite : Box2}]"></div>
+        <div v-on:click = "Box3Click" v-bind:class = "[Box, {BoxWhite : Box3}]"></div>
       </div>
       <div class = "mandalLine2">
-        <div class = "box4"></div>
+        <div v-on:click = "Box4Click" v-bind:class = "[Box, {BoxWhite : Box4}]"></div>
         <div class = "box5">1</div>
-        <div class = "box6"></div>
-      </div>
+        <div v-on:click = "Box6Click" v-bind:class = "[Box, {BoxWhite : Box6}]"></div>  </div>
       <div class = "mandalLine3">
-        <div class = "box7"></div>
-        <div class = "box8"></div>
-        <div class = "box9"></div>
-      </div>
+        <div v-on:click = "Box7Click" v-bind:class = "[Box, {BoxWhite : Box7}]"></div>
+        <div v-on:click = "Box8Click" v-bind:class = "[Box, {BoxWhite : Box8}]"></div>
+        <div v-on:click = "Box9Click" v-bind:class = "[Box, {BoxWhite : Box9}]"></div></div>
     </div>
   </div>
 </template>
@@ -39,9 +37,14 @@ export default {
   name: 'makeC',
   data () {
     return {
-      arrow () {
-        alert('예에!')
-      }
+      Box1: (Vue.$localStorage.get('Box1Title') !== null),
+      Box2: (Vue.$localStorage.get('Box2Title') !== null),
+      Box3: (Vue.$localStorage.get('Box3Title') !== null),
+      Box4: (Vue.$localStorage.get('Box4Title') !== null),
+      Box6: (Vue.$localStorage.get('Box6Title') !== null),
+      Box7: (Vue.$localStorage.get('Box7Title') !== null),
+      Box8: (Vue.$localStorage.get('Box8Title') !== null),
+      Box9: (Vue.$localStorage.get('Box9Title') !== null)
     }
   }
 }
@@ -76,7 +79,7 @@ ul{
 .circle2, .circle3{
   margin-left: calc( (12.4vw - 4.5vh) / 2);
 }
-.circle3{
+.circle3  {
   background: #677e52;
 }
 .inputTitle{
@@ -132,7 +135,6 @@ ul{
   font-size: 2.6vh;
   text-align: center;
   line-height: 9vh;
-  background: #fff;
 }
 .mandalLine2 > div{
   border: 0.16vh solid #677e52;
@@ -155,5 +157,8 @@ ul{
 .box5{
   color: #fff;
   background: #667e52
+}
+.BoxWhite{
+  background: #fff;
 }
 </style>

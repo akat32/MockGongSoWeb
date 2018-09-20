@@ -6,14 +6,14 @@
       <div class = "circle2"></div>
       <div class = "circle3"></div>
     </div>
-    <router-link class = "arrow" to = "/makeB"></router-link>
+    <div v-on:click = "click" class = "arrow" to = "/makeB"></div>
     <div class = "inputTitle">만다라트의 제목을<br />입력해주세요</div>
     <div class = "introTitle">지금 적은 제목은 만다라트의<br />중심에 위치합니다</div>
     <div class = "mandalBox">
       <input type="text" class = "mandalTitle" placeholder="1" readonly/>
     </div>
     <div class = "inputBox">
-      <input type="text" class="inputMandalTitle" placeholder="제목을 입력하세요" />
+      <input v-model = "title" type="text" class="inputMandalTitle" placeholder="제목을 입력하세요" />
     </div>
   </div>
 </template>
@@ -25,8 +25,18 @@ Vue.use(Storage)
 
 export default {
   name: 'makeA',
+  methods: {
+    click () {
+      Vue.$localStorage.set('newMandalTitle', this.title)
+      location.replace('#/makeB')
+    }
+  },
   data () {
+    var ttitle = Vue.$localStorage.get('newMandalTitle')
+    console.log(ttitle)
+    if (ttitle === 'undefined' || ttitle === null) ttitle = ''
     return {
+      title: ttitle
     }
   }
 }

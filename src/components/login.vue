@@ -46,14 +46,12 @@ export default {
         var mandalResult = await axios.post('http://iwin247.kr:3321/getMandal/app', {
           token: result.data.data.token
         }).catch((response) => {
-          alert('로그인을 확인하세요!')
           return 0
         })
         if (mandalResult.status === 200) Vue.$localStorage.set('mandal', JSON.stringify(mandalResult.data.re.mandal))
         var subResult = await axios.post('http://iwin247.kr:3321/getTMandalChk/app', {
           token: result.data.data.token
         }).catch((response) => {
-          alert('로그인을 확인하세요!')
           return 0
         })
         if (subResult.status === 200) Vue.$localStorage.set('subMandal', JSON.stringify(subResult.data.re.mandal))
