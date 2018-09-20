@@ -8,17 +8,17 @@
         </div>
         <div class = "mandal">
           <div class = "tri1_border">
-            <div class = "tri1"></div>
+            <div v-bind:class = "['tri1', {triWhite : tri_chk1}]"></div>
           </div>
           <div class = "tri_line">
             <div class = "tri2_border">
-              <div class = "tri2"></div>
+              <div v-bind:class = "['tri2', {triWhite : tri_chk1}]"></div>
             </div>
             <div class = "triMain_border">
               <!-- <div class = "triMain"></div> -->
             </div>
             <div class = "tri3_border">
-              <div class = "tri3"></div>
+              <div v-bind:class = "['tri3', {triWhite : tri_chk1}]"></div>
             </div>
           </div>
         </div>
@@ -42,12 +42,17 @@
 import Vue from 'vue'
 import Storage from 'vue-web-storage'
 Vue.use(Storage)
+
 export default {
   name: 'subMandal',
   data () {
+    var sub = JSON.parse(Vue.$localStorage.get('subMandal'))
     return {
       triMandalChk: Vue.$localStorage.get('triMandalChk'),
-      triTitle: Vue.$localStorage.get('triTitle')
+      triTitle: Vue.$localStorage.get('triTitle'),
+      tri_chk1: (sub[0].middleTitle !== ''),
+      tri_chk2: (sub[1].middleTitle !== ''),
+      tri_chk3: (sub[2].middleTitle !== '')
     }
   }
 }
@@ -174,5 +179,8 @@ export default {
   line-height: 8vh;
   font-size: 2.1vh;
   box-shadow: 0px 0.2vh 0 gray;
+}
+.triWhite{
+  border-color: transparent transparent #ffffff;
 }
 </style>

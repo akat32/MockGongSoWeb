@@ -9,24 +9,24 @@
         </div>
         <div class = "mandal">
           <div class = "mandalLine1">
-            <Box mandal></Box>
+            <Box v-bind:class = "{BoxWhite : Box0}"></Box>
             <div style = "margin-right: 2.5vh;"></div>
-            <Box mandal></Box>
+            <Box v-bind:class = "{BoxWhite : Box1}"></Box>
             <div style = "margin-right: 2.5vh;"></div>
-            <Box mandal></Box>
+            <Box v-bind:class = "{BoxWhite : Box2}"></Box>
           </div>
           <div class = "mandalLine2">
-            <Box :mandal = "3"></Box>
+            <Box v-bind:class = "{BoxWhite : Box3}"></Box>
             <div style = "margin-right: 2.5vh;"></div>
             <div class = "Box5"></div>
-            <Box :mandal = "4"></Box>
+            <Box v-bind:class = "{BoxWhite : Box4}"></Box>
           </div>
           <div class = "mandalLine3">
-            <Box :mandal = "5"></Box>
+            <Box v-bind:class = "{BoxWhite : Box5}"></Box>
             <div style = "margin-right: 2.5vh;"></div>
-            <Box :mandal = "6"></Box>
+            <Box v-bind:class = "{BoxWhite : Box6}"></Box>
             <div style = "margin-right: 2.5vh;"></div>
-            <Box :mandal = "7"></Box>
+            <Box v-bind:class = "{BoxWhite : Box7}"></Box>
           </div>
         </div>
       </div>
@@ -59,28 +59,22 @@ Vue.component('Box', {
 export default {
   name: 'mandal',
   data () {
+    var mandal = JSON.parse(Vue.$localStorage.get('mandal'))
     return {
       title: Vue.$localStorage.get('title'),
       achievement: Vue.$localStorage.get('achievement'),
-      MandalChk: Vue.$localStorage.get('MandalChk')
+      MandalChk: Vue.$localStorage.get('MandalChk'),
+      Box0: (mandal[0].middleTitle !== ''),
+      Box1: (mandal[1].middleTitle !== ''),
+      Box2: (mandal[2].middleTitle !== ''),
+      Box3: (mandal[3].middleTitle !== ''),
+      Box4: (mandal[4].middleTitle !== ''),
+      Box5: (mandal[5].middleTitle !== ''),
+      Box6: (mandal[6].middleTitle !== ''),
+      Box7: (mandal[7].middleTitle !== '')
     }
   }
 }
-// new Vue({
-//   el: '#Box',
-//   data: {
-//     items: [
-//       {mandal: 0},
-//       {mandal: 1},
-//       {mandal: 2},
-//       {mandal: 3},
-//       {mandal: 4},
-//       {mandal: 5},
-//       {mandal: 6},
-//       {mandal: 7}
-//     ]
-//   }
-// })
 
 </script>
 <style scoped>
