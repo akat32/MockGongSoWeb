@@ -6,7 +6,6 @@
       <div class = "circle2"></div>
       <div class = "circle3"></div>
     </div>
-    <router-link class = "arrow1" to = "/makeD"></router-link>
     <router-link class = "arrow2" to = "/makeB"></router-link>
     <div class = "inputTitle">만들어진 2단계의 칸을 눌러<br />3단계의 목표를 정해주세요</div>
     <div class = "introTitle">2단계의 중심 키워드를 가지고 목표를 만들어보세요<br />3단계 목표도 언제든지 수정할 수 있어요</div>
@@ -27,6 +26,7 @@
         <div v-on:click = "Box9Click" v-bind:class = "[Box, {BoxWhite : Box9}]">{{ Bx9 }}</div>
       </div>
     </div>
+    <div v-on:click = "addMandal" class = "apply">만다라트 만들기</div>
   </div>
 </template>
 <script>
@@ -56,10 +56,78 @@ export default {
       Bx8: (Vue.$localStorage.get('Box8Title') !== null) ? 2 : '',
       Bx9: (Vue.$localStorage.get('Box9Title') !== null) ? 2 : ''
     }
+  },
+  methods: {
+    Box1Click () {
+      if (Vue.$localStorage.get('Box1Title') === null) return 0
+      Vue.$localStorage.set('middleNum', 0)
+      location.replace('#/makeD')
+    },
+    Box2Click () {
+      if (Vue.$localStorage.get('Box2Title') === null) return 0
+      Vue.$localStorage.set('middleNum', 1)
+      location.replace('#/makeD')
+    },
+    Box3Click () {
+      if (Vue.$localStorage.get('Box3Title') === null) return 0
+      Vue.$localStorage.set('middleNum', 2)
+      location.replace('#/makeD')
+    },
+    Box4Click () {
+      if (Vue.$localStorage.get('Box4Title') === null) return 0
+      Vue.$localStorage.set('middleNum', 3)
+      location.replace('#/makeD')
+    },
+    Box6Click () {
+      if (Vue.$localStorage.get('Box6Title') === null) return 0
+      Vue.$localStorage.set('middleNum', 4)
+      location.replace('#/makeD')
+    },
+    Box7Click () {
+      if (Vue.$localStorage.get('Box7Title') === null) return 0
+      Vue.$localStorage.set('middleNum', 5)
+      location.replace('#/makeD')
+    },
+    Box8Click () {
+      if (Vue.$localStorage.get('Box8Title') === null) return 0
+      Vue.$localStorage.set('middleNum', 6)
+      location.replace('#/makeD')
+    },
+    Box9Click () {
+      if (Vue.$localStorage.get('Box9Title') === null) return 0
+      Vue.$localStorage.set('middleNum', 7)
+      location.replace('#/makeD')
+    },
+    async addMandal () {
+      var mandal = JSON.parse(Vue.$localStorage.get('newMandal'))
+      mandal.title = Vue.$localStorage.get('newMandalTitle')
+      mandal.middle[0].title = Vue.$localStorage.get('Box1Title')
+      mandal.middle[1].title = Vue.$localStorage.get('Box2Title')
+      mandal.middle[2].title = Vue.$localStorage.get('Box3Title')
+      mandal.middle[3].title = Vue.$localStorage.get('Box4Title')
+      mandal.middle[4].title = Vue.$localStorage.get('Box6Title')
+      mandal.middle[5].title = Vue.$localStorage.get('Box7Title')
+      mandal.middle[6].title = Vue.$localStorage.get('Box8Title')
+      mandal.middle[7].title = Vue.$localStorage.get('Box9Title')
+      for (var i = 0; i < 8; i++) if (mandal.middle[i].title === null) mandal.middle[i].title = ''
+      console.log(mandal)
+      // var result = axios.post('http://iwin247.kr:3321/make/app', {})
+    }
   }
 }
 </script>
 <style scoped>
+.apply{
+  width: 33vh;
+  height: 6vh;
+  background: #fff;
+  color: #677e52;
+  text-align: center;
+  line-height: 6vh;
+  border-radius: 0.3em;
+  font-size: 2.1vh;
+  margin: auto;
+}
 ul{
   list-style:none;
   padding:0;

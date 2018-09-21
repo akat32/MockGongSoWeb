@@ -1,45 +1,45 @@
 <template>
   <div>
-    <template v-if = "MandalChk">
+    <template v-if = 'MandalChk'>
       <div>
-        <div class = "title">만다라트</div>
-        <div class = "mandalTitle">
-          <div class = "titleIndex">{{ title }}</div>
-          <div class = "achievement" >지금까지 {{ achievement }}% 달성 </div>
+        <div class = 'title'>만다라트</div>
+        <div class = 'mandalTitle'>
+          <div class = 'titleIndex'>{{ title }}</div>
+          <div class = 'achievement' >지금까지 {{ achievement }}% 달성 </div>
         </div>
-        <div class = "mandal">
-          <div class = "mandalLine1">
-            <Box v-bind:class = "{BoxWhite : Box0}"></Box>
-            <div style = "margin-right: 2.5vh;"></div>
-            <Box v-bind:class = "{BoxWhite : Box1}"></Box>
-            <div style = "margin-right: 2.5vh;"></div>
-            <Box v-bind:class = "{BoxWhite : Box2}"></Box>
+        <div class = 'mandal'>
+          <div class = 'mandalLine1'>
+            <Box v-bind:class = '{BoxWhite : Box0}'></Box>
+            <div style = 'margin-right: 2.5vh;'></div>
+            <Box v-bind:class = '{BoxWhite : Box1}'></Box>
+            <div style = 'margin-right: 2.5vh;'></div>
+            <Box v-bind:class = '{BoxWhite : Box2}'></Box>
           </div>
-          <div class = "mandalLine2">
-            <Box v-bind:class = "{BoxWhite : Box3}"></Box>
-            <div style = "margin-right: 2.5vh;"></div>
-            <div class = "Box5"></div>
-            <Box v-bind:class = "{BoxWhite : Box4}"></Box>
+          <div class = 'mandalLine2'>
+            <Box v-bind:class = '{BoxWhite : Box3}'></Box>
+            <div style = 'margin-right: 2.5vh;'></div>
+            <div class = 'Box5'></div>
+            <Box v-bind:class = '{BoxWhite : Box4}'></Box>
           </div>
-          <div class = "mandalLine3">
-            <Box v-bind:class = "{BoxWhite : Box5}"></Box>
-            <div style = "margin-right: 2.5vh;"></div>
-            <Box v-bind:class = "{BoxWhite : Box6}"></Box>
-            <div style = "margin-right: 2.5vh;"></div>
-            <Box v-bind:class = "{BoxWhite : Box7}"></Box>
+          <div class = 'mandalLine3'>
+            <Box v-bind:class = '{BoxWhite : Box5}'></Box>
+            <div style = 'margin-right: 2.5vh;'></div>
+            <Box v-bind:class = '{BoxWhite : Box6}'></Box>
+            <div style = 'margin-right: 2.5vh;'></div>
+            <Box v-bind:class = '{BoxWhite : Box7}'></Box>
           </div>
         </div>
       </div>
     </template>
     <template v-else>
       <div>
-        <div class = "title">만다라트</div>
-        <div class = "non_mandal">
-          <div class = "Logo"></div>
-          <div class = "text">현재 만들어 놓은<br />만다라트 가 없어요!</div>
+        <div class = 'title'>만다라트</div>
+        <div class = 'non_mandal'>
+          <div class = 'Logo'></div>
+          <div class = 'text'>현재 만들어 놓은<br />만다라트 가 없어요!</div>
         </div>
         <router-link to = '/makeA'>
-          <div class = "new_mandal">만다라트 새로 만들기</div>
+          <div v-on:click='click' class = 'new_mandal'>만다라트 새로 만들기</div>
         </router-link>
       </div>
     </template>
@@ -72,6 +72,49 @@ export default {
       Box5: (mandal[5].middleTitle !== ''),
       Box6: (mandal[6].middleTitle !== ''),
       Box7: (mandal[7].middleTitle !== '')
+    }
+  },
+  methods: {
+    click () {
+      var newMandalArt = {
+        'middle': [
+          {
+            'small': ['', '', '', '', '', '', '', ''],
+            'title': ''
+          },
+          {
+            'small': ['', '', '', '', '', '', '', ''],
+            'title': ''
+          },
+          {
+            'small': ['', '', '', '', '', '', '', ''],
+            'title': ''
+          },
+          {
+            'small': ['', '', '', '', '', '', '', ''],
+            'title': ''
+          },
+          {
+            'small': ['', '', '', '', '', '', '', ''],
+            'title': ''
+          },
+          {
+            'small': ['', '', '', '', '', '', '', ''],
+            'title': ''
+          },
+          {
+            'small': ['', '', '', '', '', '', '', ''],
+            'title': ''
+          },
+          {
+            'small': ['', '', '', '', '', '', '', ''],
+            'title': ''
+          }
+        ],
+        title: '',
+        token: Vue.$localStorage.get('token')
+      }
+      Vue.$localStorage.set('newMandal', JSON.stringify(newMandalArt))
     }
   }
 }

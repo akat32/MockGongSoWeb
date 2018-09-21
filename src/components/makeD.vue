@@ -6,165 +6,246 @@
       <div class = "circle2"></div>
       <div class = "circle3"></div>
     </div>
-    <router-link class = "arrow1" to = "/makeC"></router-link>
-    <router-link class = "arrow2" to = "/makeA"></router-link>
+    <router-link class = "arrow2" to = "/makeC"></router-link>
     <div class = "inputTitle">만다라트의 원하는 위치에<br />3단계 목표를 정해주세요</div>
     <div class = "introTitle">3단계 목표의 성취도를 변경해<br /> 만다라트의 완성도를 높일 수 있어요</div>
     <div class = "mandal">
       <div class = "mandalLine1">
-        <div v-on:click = "Box1Click" v-bind:class = "[Box, {BoxWhite : Box1}]"></div>
-        <div v-on:click = "Box2Click" v-bind:class = "[Box, {BoxWhite : Box2}]"></div>
-        <div v-on:click = "Box3Click" v-bind:class = "[Box, {BoxWhite : Box3}]"></div>
+        <div v-on:click = "Box1Click" v-bind:class = "[Box, {BoxWhite : Bx1}]">{{ Bx1 }}</div>
+        <div v-on:click = "Box2Click" v-bind:class = "[Box, {BoxWhite : Bx2}]">{{ Bx2 }}</div>
+        <div v-on:click = "Box3Click" v-bind:class = "[Box, {BoxWhite : Bx3}]">{{ Bx3 }}</div>
       </div>
       <div class = "mandalLine2">
-        <div v-on:click = "Box4Click" v-bind:class = "[Box, {BoxWhite : Box4}]"></div>
-        <div class = "box5">2</div>
-        <div v-on:click = "Box6Click" v-bind:class = "[Box, {BoxWhite : Box6}]"></div>  </div>
+        <div v-on:click = "Box4Click" v-bind:class = "[Box, {BoxWhite : Bx4}]">{{ Bx4 }}</div>
+        <div v-on:click = "Box5Click" class = "box5">2</div>
+        <div v-on:click = "Box6Click" v-bind:class = "[Box, {BoxWhite : Bx6}]">{{ Bx6 }}</div>
+      </div>
       <div class = "mandalLine3">
-        <div v-on:click = "Box7Click" v-bind:class = "[Box, {BoxWhite : Box7}]"></div>
-        <div v-on:click = "Box8Click" v-bind:class = "[Box, {BoxWhite : Box8}]"></div>
-        <div v-on:click = "Box9Click" v-bind:class = "[Box, {BoxWhite : Box9}]"></div></div>
+        <div v-on:click = "Box7Click" v-bind:class = "[Box, {BoxWhite : Bx7}]">{{ Bx7 }}</div>
+        <div v-on:click = "Box8Click" v-bind:class = "[Box, {BoxWhite : Bx8}]">{{ Bx8 }}</div>
+        <div v-on:click = "Box9Click" v-bind:class = "[Box, {BoxWhite : Bx9}]">{{ Bx9 }}</div>
+      </div>
     </div>
   </div>
 </template>
 <script>
+/* eslint-disable */
 import Vue from 'vue'
 // import axios from 'axios'
 import Storage from 'vue-web-storage'
 Vue.use(Storage)
 
 export default {
-  name: 'makeB',
+  name: 'makeD',
   data () {
+    var mandal = JSON.parse(Vue.$localStorage.get('newMandal'))
+    var middle = mandal.middle[Vue.$localStorage.get('middleNum')]
     return {
-      Box1: (Vue.$localStorage.get('Box1Title') !== null),
-      Box2: (Vue.$localStorage.get('Box2Title') !== null),
-      Box3: (Vue.$localStorage.get('Box3Title') !== null),
-      Box4: (Vue.$localStorage.get('Box4Title') !== null),
-      Box6: (Vue.$localStorage.get('Box6Title') !== null),
-      Box7: (Vue.$localStorage.get('Box7Title') !== null),
-      Box8: (Vue.$localStorage.get('Box8Title') !== null),
-      Box9: (Vue.$localStorage.get('Box9Title') !== null)
+      Bx1: (middle.small[0] !== '') ? 3 : '',
+      Bx2: (middle.small[1] !== '') ? 3 : '',
+      Bx3: (middle.small[2] !== '') ? 3 : '',
+      Bx4: (middle.small[3] !== '') ? 3 : '',
+      Bx6: (middle.small[4] !== '') ? 3 : '',
+      Bx7: (middle.small[5] !== '') ? 3 : '',
+      Bx8: (middle.small[6] !== '') ? 3 : '',
+      Bx9: (middle.small[7] !== '') ? 3 : ''
     }
   },
   methods: {
+    Box5Click () {
+      location.replace('#/makeC')
+    },
     Box1Click () {
-      if (this.Box1) {
-        this.Box1 = !this.Box1
+      if (this.Bx1 === 3){
+        this.Bx1 = ''
+        var mandal = JSON.parse(Vue.$localStorage.get('newMandal'))
+        var num = Vue.$localStorage.get('middleNum')
+        mandal.middle[num].small[0] = ''
+        Vue.$localStorage.set('newMandal', JSON.stringify(mandal))
         return 0
       }
-      var newTitle = prompt('2단계 목표를 입력하세요!')
-      if (newTitle !== null && newTitle !== '') {
-        Vue.$localStorage.set('Box1Title', newTitle)
-        this.Box1 = !this.Box1
+      var lowTitle = prompt('3단계 목표를 정해주세요!')
+      if (lowTitle === null || lowTitle === '') {
+        alert('다시 입력해주세요..')
         return 0
         // eslint-disable-next-line
       }
-      else alert('다시 입력해주세요..')
+      else {
+        var mandal = JSON.parse(Vue.$localStorage.get('newMandal'))
+        var num = Vue.$localStorage.get('middleNum')
+        mandal.middle[num].small[0] = lowTitle
+        Vue.$localStorage.set('newMandal', JSON.stringify(mandal))
+        this.Bx1 = 3
+        // eslint-disable-next-line
+      }
     },
     Box2Click () {
-      if (this.Box2) {
-        this.Box2 = !this.Box2
+      if (this.Bx2 === 3){
+        this.Bx2 = ''
+        var mandal = JSON.parse(Vue.$localStorage.get('newMandal'))
+        var num = Vue.$localStorage.get('middleNum')
+        mandal.middle[num].small[1] = ''
+        Vue.$localStorage.set('newMandal', JSON.stringify(mandal))
         return 0
       }
-      var newTitle = prompt('2단계 목표를 입력하세요!')
-      if (newTitle !== null && newTitle !== '') {
-        Vue.$localStorage.set('Box2Title', newTitle)
-        this.Box2 = !this.Box2
+      var lowTitle = prompt('3단계 목표를 정해주세요!')
+      if (lowTitle === null || lowTitle === '') {
+        alert('다시 입력해주세요..')
         return 0
         // eslint-disable-next-line
       }
-      else alert('다시 입력해주세요..')
+      else {
+        var mandal = JSON.parse(Vue.$localStorage.get('newMandal'))
+        var num = Vue.$localStorage.get('middleNum')
+        mandal.middle[num].small[1] = lowTitle
+        Vue.$localStorage.set('newMandal', JSON.stringify(mandal))
+        this.Bx2 = '3'
+        // eslint-disable-next-line
+      }
     },
     Box3Click () {
-      if (this.Box3) {
-        this.Box3 = !this.Box3
+      if (this.Bx3 === 3){
+        this.Bx3 = ''
+        var mandal = JSON.parse(Vue.$localStorage.get('newMandal'))
+        var num = Vue.$localStorage.get('middleNum')
+        mandal.middle[num].small[2] = ''
+        Vue.$localStorage.set('newMandal', JSON.stringify(mandal))
+        return 0
+      }
+      var lowTitle = prompt('3단계 목표를 정해주세요!')
+      if (lowTitle === null || lowTitle === '') {
+        alert('다시 입력해주세요..')
         return 0
         // eslint-disable-next-line
       }
-      var newTitle = prompt('2단계 목표를 입력하세요!')
-      if (newTitle !== null && newTitle !== '') {
-        Vue.$localStorage.set('Box3Title', newTitle)
-        this.Box3 = !this.Box3
-        return 0
+      else {
+        var mandal = JSON.parse(Vue.$localStorage.get('newMandal'))
+        var num = Vue.$localStorage.get('middleNum')
+        mandal.middle[num].small[2] = lowTitle
+        Vue.$localStorage.set('newMandal', JSON.stringify(mandal))
+        this.Bx3 = 3
         // eslint-disable-next-line
       }
-      else alert('다시 입력해주세요..')
     },
     Box4Click () {
-      if (this.Box4) {
-        this.Box4 = !this.Box4
+      if (this.Bx4 === 3){
+        this.Bx4 = ''
+        var mandal = JSON.parse(Vue.$localStorage.get('newMandal'))
+        var num = Vue.$localStorage.get('middleNum')
+        mandal.middle[num].small[3] = ''
+        Vue.$localStorage.set('newMandal', JSON.stringify(mandal))
+        return 0
+      }
+      var lowTitle = prompt('3단계 목표를 정해주세요!')
+      if (lowTitle === null || lowTitle === '') {
+        alert('다시 입력해주세요..')
         return 0
         // eslint-disable-next-line
       }
-      var newTitle = prompt('2단계 목표를 입력하세요!')
-      if (newTitle !== null && newTitle !== '') {
-        Vue.$localStorage.set('Box4Title', newTitle)
-        this.Box4 = !this.Box4
-        return 0
+      else {
+        var mandal = JSON.parse(Vue.$localStorage.get('newMandal'))
+        var num = Vue.$localStorage.get('middleNum')
+        mandal.middle[num].small[3] = lowTitle
+        Vue.$localStorage.set('newMandal', JSON.stringify(mandal))
+        this.Bx4 = 3
         // eslint-disable-next-line
       }
-      else alert('다시 입력해주세요..')
     },
     Box6Click () {
-      if (this.Box6) {
-        this.Box6 = !this.Box6
+      if (this.Bx6 === 3){
+        this.Bx6 = ''
+        var mandal = JSON.parse(Vue.$localStorage.get('newMandal'))
+        var num = Vue.$localStorage.get('middleNum')
+        mandal.middle[num].small[4] = ''
+        Vue.$localStorage.set('newMandal', JSON.stringify(mandal))
+        return 0
+      }
+      var lowTitle = prompt('3단계 목표를 정해주세요!')
+      if (lowTitle === null || lowTitle === '') {
+        alert('다시 입력해주세요..')
         return 0
         // eslint-disable-next-line
       }
-      var newTitle = prompt('2단계 목표를 입력하세요!')
-      if (newTitle !== null && newTitle !== '') {
-        Vue.$localStorage.set('Box6Title', newTitle)
-        this.Box6 = !this.Box6
-        return 0
+      else {
+        var mandal = JSON.parse(Vue.$localStorage.get('newMandal'))
+        var num = Vue.$localStorage.get('middleNum')
+        mandal.middle[num].small[4] = lowTitle
+        Vue.$localStorage.set('newMandal', JSON.stringify(mandal))
+        this.Bx6 = 3
         // eslint-disable-next-line
       }
-      else alert('다시 입력해주세요..')
     },
     Box7Click () {
-      if (this.Box7) {
-        this.Box7 = !this.Box7
+      if (this.Bx7 === 3){
+        this.Bx7 = ''
+        var mandal = JSON.parse(Vue.$localStorage.get('newMandal'))
+        var num = Vue.$localStorage.get('middleNum')
+        mandal.middle[num].small[5] = ''
+        Vue.$localStorage.set('newMandal', JSON.stringify(mandal))
+        return 0
+      }
+      var lowTitle = prompt('3단계 목표를 정해주세요!')
+      if (lowTitle === null || lowTitle === '') {
+        alert('다시 입력해주세요..')
         return 0
         // eslint-disable-next-line
       }
-      var newTitle = prompt('2단계 목표를 입력하세요!')
-      if (newTitle !== null && newTitle !== '') {
-        Vue.$localStorage.set('Box7Title', newTitle)
-        this.Box7 = !this.Box7
-        return 0
+      else {
+        var mandal = JSON.parse(Vue.$localStorage.get('newMandal'))
+        var num = Vue.$localStorage.get('middleNum')
+        mandal.middle[num].small[5] = lowTitle
+        Vue.$localStorage.set('newMandal', JSON.stringify(mandal))
+        this.Bx7 = 3
         // eslint-disable-next-line
       }
-      else alert('다시 입력해주세요..')
     },
     Box8Click () {
-      if (this.Box8) {
-        this.Box8 = !this.Box8
+      if (this.Bx8 === 3){
+        this.Bx8 = ''
+        var mandal = JSON.parse(Vue.$localStorage.get('newMandal'))
+        var num = Vue.$localStorage.get('middleNum')
+        mandal.middle[num].small[6] = ''
+        Vue.$localStorage.set('newMandal', JSON.stringify(mandal))
+        return 0
+      }
+      var lowTitle = prompt('3단계 목표를 정해주세요!')
+      if (lowTitle === null || lowTitle === '') {
+        alert('다시 입력해주세요..')
         return 0
         // eslint-disable-next-line
       }
-      var newTitle = prompt('2단계 목표를 입력하세요!')
-      if (newTitle !== null && newTitle !== '') {
-        Vue.$localStorage.set('Box8Title', newTitle)
-        this.Box8 = !this.Box8
-        return 0
+      else {
+        var mandal = JSON.parse(Vue.$localStorage.get('newMandal'))
+        var num = Vue.$localStorage.get('middleNum')
+        mandal.middle[num].small[6] = lowTitle
+        Vue.$localStorage.set('newMandal', JSON.stringify(mandal))
+        this.Bx8 = 3
         // eslint-disable-next-line
       }
-      else alert('다시 입력해주세요..')
     },
     Box9Click () {
-      if (this.Box9) {
-        this.Box9 = !this.Box9
+      if (this.Bx9 === 3){
+        this.Bx9 = ''
+        var mandal = JSON.parse(Vue.$localStorage.get('newMandal'))
+        var num = Vue.$localStorage.get('middleNum')
+        mandal.middle[num].small[7] = ''
+        Vue.$localStorage.set('newMandal', JSON.stringify(mandal))
+        return 0
+      }
+      var lowTitle = prompt('3단계 목표를 정해주세요!')
+      if (lowTitle === null || lowTitle === '') {
+        alert('다시 입력해주세요..')
         return 0
         // eslint-disable-next-line
       }
-      var newTitle = prompt('2단계 목표를 입력하세요!')
-      if (newTitle !== null && newTitle !== '') {
-        Vue.$localStorage.set('Box9Title', newTitle)
-        this.Box9 = !this.Box9
-        return 0
+      else {
+        var mandal = JSON.parse(Vue.$localStorage.get('newMandal'))
+        var num = Vue.$localStorage.get('middleNum')
+        mandal.middle[num].small[7] = lowTitle
+        Vue.$localStorage.set('newMandal', JSON.stringify(mandal))
+        this.Bx9 = 3
         // eslint-disable-next-line
       }
-      else alert('다시 입력해주세요..')
     }
   }
 }
