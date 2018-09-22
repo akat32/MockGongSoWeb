@@ -4,7 +4,7 @@
       <div>
         <p class = "day">만다라트 {{ startDay }}일째 달성중</p>
         <div class = "img">
-          <img :src = "imgString" v-on:click = "click" class = "inner_img"/>
+          <img :src = "imgString" class = "inner_img"/>
         </div>
         <p class = "achievement">{{ achievement }}<span>%</span></p>
       </div>
@@ -56,15 +56,7 @@ export default {
       imgString: mandalImgString,
       achievement: Vue.$localStorage.get('achievement')
     }
-  },
-  methods: {
-    click () {
-      console.log(dateDiff('', new Date()) + 1)
-      // Vue.$localStorage.get('startDay')
-      // eslint-disable-next-line
-    }
-  },
-  mounted: () => {}
+  }
 }
 </script>
 <!-- Add "scoped" attribute to limit CSS to this component only -->

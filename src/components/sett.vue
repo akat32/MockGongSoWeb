@@ -20,14 +20,14 @@
         <div class = "terms">약관 및 개인정보 활용 동의</div>
         <div class = "arrow"></div>
       </div>
-      <div class = "withdrawal">회원 탈퇴</div>
+      <div v-on:click = "deluser" class = "withdrawal">회원 탈퇴</div>
       <div v-on:click = "logout" class = "logout">로그아웃</div>
     </div>
   </div>
 </template>
 <script>
 import Vue from 'vue'
-// import axios from 'axios'
+import axios from 'axios'
 import Storage from 'vue-web-storage'
 Vue.use(Storage)
 function dateDiff (_date1, _date2) {
@@ -57,6 +57,15 @@ export default {
       alert('웹에서는 지원하지 않는 기능입니다!')
     },
     logout () {
+      Vue.$localStorage.clear()
+      location.replace('#/login')
+    },
+    async deluser () {
+      await axios.post('http://iwin247.kr:3321/deluser', {
+        token: Vue.$localStorage.get('token')
+      }).catch((response) => {
+        return 0
+      })
       Vue.$localStorage.clear()
       location.replace('#/login')
     }

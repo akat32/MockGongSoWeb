@@ -30,11 +30,30 @@
   </div>
 </template>
 <script>
+/* eslint-disable */
 import Vue from 'vue'
-// import axios from 'axios'
+import axios from 'axios'
 import Storage from 'vue-web-storage'
 Vue.use(Storage)
+function getTimeStamp() {
+  var d = new Date();
 
+  var s =
+    leadingZeros(d.getFullYear(), 4) + '-' +
+    leadingZeros(d.getMonth() + 1, 2) + '-' +
+    leadingZeros(d.getDate(), 2)
+  return s
+}
+
+function leadingZeros(n, digits) {
+  var zero = ''
+  n = n.toString()
+  if (n.length < digits) {
+    for (var i = 0; i < digits - n.length; i++)
+    zero += '0'
+  }
+  return zero + n
+}
 export default {
   name: 'makeC',
   data () {
@@ -111,7 +130,36 @@ export default {
       mandal.middle[7].title = Vue.$localStorage.get('Box9Title')
       for (var i = 0; i < 8; i++) if (mandal.middle[i].title === null) mandal.middle[i].title = ''
       console.log(mandal)
-      // var result = axios.post('http://iwin247.kr:3321/make/app', {})
+      var result = await axios.post('http://iwin247.kr:3321/make/app', {
+        token: mandal.token,
+        title: mandal.title,
+        middle: mandal.middle
+      }).catch((response) => {
+        alert('오류에요..')
+        return 0
+      })
+      if (result.status === 200) {
+        var mandalResult = await axios.post('http://iwin247.kr:3321/getMandal/app', {
+          token: mandal.token
+        }).catch((response) => {
+          return 0
+        })
+        if (mandalResult.status === 200) {
+          Vue.$localStorage.set('mandal', JSON.stringify(mandalResult.data.re.mandal))
+          Vue.$localStorage.set('MandalChk', true)
+          Vue.$localStorage.set('title', mandalResult.data.re.title)
+          Vue.$localStorage.set('achievement', mandalResult.data.re.achievement)
+          var startDayNow = getTimeStamp();
+          Vue.$localStorage.set('startDay', startDayNow)
+          var dayResult = await axios.post('http://iwin247.kr:3321/addDay/app', {
+            token: mandal.token,
+            startDay: startDayNow
+          }).catch((response) => {
+            return 0
+          })
+        }
+        location.replace('#/mandalA')
+      }
     }
   }
 }
