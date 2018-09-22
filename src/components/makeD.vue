@@ -37,6 +37,9 @@ Vue.use(Storage)
 
 export default {
   name: 'makeD',
+  mounted () {
+    if (!Vue.$localStorage.get('token')) location.replace('#/login')
+  },
   data () {
     var mandal = JSON.parse(Vue.$localStorage.get('newMandal'))
     var middle = mandal.middle[Vue.$localStorage.get('middleNum')]

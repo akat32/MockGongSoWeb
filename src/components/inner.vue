@@ -22,8 +22,15 @@
 </template>
 
 <script>
+import Vue from 'vue'
+// import axios from 'axios'
+import Storage from 'vue-web-storage'
+Vue.use(Storage)
 export default {
-  name: 'mandal'
+  name: 'mandal',
+  mounted () {
+    if (!Vue.$localStorage.get('token')) location.replace('#/login')
+  }
 }
 </script>
 <!-- Add "scoped" attribute to limit CSS to this component only -->

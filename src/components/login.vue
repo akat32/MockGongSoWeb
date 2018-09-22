@@ -59,6 +59,9 @@ export default {
         location.replace('#/')
       }
     }
+  },
+  mounted () {
+    if (Vue.$localStorage.get('token')) location.replace('#/')
   }
 }
 </script>

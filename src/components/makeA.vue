@@ -38,6 +38,9 @@ export default {
     return {
       title: ttitle
     }
+  },
+  mounted () {
+    if (!Vue.$localStorage.get('token')) location.replace('#/login')
   }
 }
 </script>

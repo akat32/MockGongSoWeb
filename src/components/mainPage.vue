@@ -56,6 +56,9 @@ export default {
       imgString: mandalImgString,
       achievement: Vue.$localStorage.get('achievement')
     }
+  },
+  mounted () {
+    if (!Vue.$localStorage.get('token')) location.replace('#/login')
   }
 }
 </script>

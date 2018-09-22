@@ -36,6 +36,9 @@ Vue.use(Storage)
 
 export default {
   name: 'makeB',
+  mounted () {
+    if (!Vue.$localStorage.get('token')) location.replace('#/login')
+  },
   data () {
     return {
       Box1: (Vue.$localStorage.get('Box1Title') !== null),

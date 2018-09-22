@@ -76,6 +76,9 @@ export default {
       Bx9: (Vue.$localStorage.get('Box9Title') !== null) ? 2 : ''
     }
   },
+  mounted () {
+    if (!Vue.$localStorage.get('token')) location.replace('#/login')
+  },
   methods: {
     Box1Click () {
       if (Vue.$localStorage.get('Box1Title') === null) return 0
