@@ -16,7 +16,7 @@
         <div class = "push">푸시알림 설정</div>
         <div v-on:click = 'push' class = "offBtn">OFF</div>
       </div>
-      <div class = "innerWith">
+      <div v-on:click = "terms" class = "innerWith">
         <div class = "terms">약관 및 개인정보 활용 동의</div>
         <div class = "arrow"></div>
       </div>
@@ -53,6 +53,9 @@ export default {
     }
   },
   methods: {
+    terms () {
+      location.replace('#/terms2')
+    },
     push () {
       alert('웹에서는 지원하지 않는 기능입니다!')
     },
