@@ -15,6 +15,7 @@ import makeA from '@/components/makeA'
 import makeB from '@/components/makeB'
 import makeC from '@/components/makeC'
 import makeD from '@/components/makeD'
+import terms from '@/components/terms'
 import Storage from 'vue-web-storage'
 Vue.use(Router)
 
@@ -105,6 +106,10 @@ export default new Router({
     {
       path: '/makeD',
       component: makeD
+    },
+    {
+      path: '/terms',
+      component: terms
     }
   ]
 })

@@ -7,7 +7,7 @@
     </div>
     <div class = "LoginBtn" v-on:click = "login">로그인</div>
     <div class = "signText">
-      <span class = "index">계정이 없으신가요? <router-link to="/register">회원가입하기</router-link></span>
+      <span class = "index">계정이 없으신가요? <router-link to="/terms">회원가입하기</router-link></span>
     </div>
     <div class = "textSocial">소셜로그인</div>
     <div class = "social">
