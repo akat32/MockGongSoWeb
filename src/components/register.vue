@@ -20,6 +20,11 @@ export default {
   name: 'register',
   methods: {
     async register () {
+      var regExp = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
+      if (this.email.match(regExp) != null) {
+        alert('이메일이 잘못되었어요..')
+        return 0
+      }
       if (this.passwd !== this.repasswd) {
         alert('비밀번호가 틀렸습니다!')
         return 0

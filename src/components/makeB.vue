@@ -18,7 +18,7 @@
       </div>
       <div class = "mandalLine2">
         <div v-on:click = "Box4Click" v-bind:class = "[Box, {BoxWhite : Box4}]">{{ Bx4 }}</div>
-        <div class = "box5">1</div>
+        <div v-on:click = "test" class = "box5">1</div>
         <div v-on:click = "Box6Click" v-bind:class = "[Box, {BoxWhite : Box6}]">{{ Bx6 }}</div>
       </div>
       <div class = "mandalLine3">
@@ -60,6 +60,10 @@ export default {
     }
   },
   methods: {
+    test () {
+      if (Vue.$localStorage.get('Box1Title')) alert('true')
+      else alert('false')
+    },
     Box1Click () {
       if (this.Box1) {
         this.Bx1 = ''

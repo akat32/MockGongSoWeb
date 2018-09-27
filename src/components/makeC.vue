@@ -26,7 +26,7 @@
         <div v-on:click = "Box9Click" v-bind:class = "[Box, {BoxWhite : Box9}]">{{ Bx9 }}</div>
       </div>
     </div>
-    <div v-on:click = "addMandal" class = "apply">만다라트 만들기</div>
+    <div v-on:click = "addMandal" class = "apply">만다라트 적용</div>
   </div>
 </template>
 <script>
