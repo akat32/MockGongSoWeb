@@ -14,7 +14,7 @@ module.exports = {
 
     // Various Dev Server settings
     // mockgongso.iwin247.kr
-    host: 'localhost', // can be overwritten by process.env.HOST
+    host: 'mockgongso.iwin247.kr', // can be overwritten by process.env.HOST
     port: 3322, // can be overwritten by process.env.PORT, if port is in use, a free one will be determined
     autoOpenBrowser: false,
     errorOverlay: true,
